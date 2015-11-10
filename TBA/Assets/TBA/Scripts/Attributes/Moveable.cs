@@ -3,10 +3,9 @@ using System.Collections;
 using UnityEngine.Networking;
 
 public class Moveable : NetworkBehaviour {
-
-	[SyncVar] Vector3 syncPos;
+	
 	public ArrayList unpathables = new ArrayList() {"Empty"}; // array of strings of names of unpathable tiles
-	[SyncVar] public ArrayList pathToTake = new ArrayList();
+	public ArrayList pathToTake = new ArrayList();
 	private HexTile pathingTo = null;
 	public int range;
 	public int remRange;
@@ -62,15 +61,15 @@ public class Moveable : NetworkBehaviour {
 //		}
 	}
 
-	void LerpPosition()
-	{
-		transform.position = Vector3.Lerp ( transform.position, syncPos, Time.deltaTime*speed);
-	}
+//	void LerpPosition()
+//	{
+//		transform.position = Vector3.Lerp ( transform.position, syncPos, Time.deltaTime*speed);
+//	}
 
-	[Command]
-	void CmdProvideServerWithSyncPos( Vector3 pos)
-	{
-
-	}
+//	[Command]
+//	void CmdProvideServerWithSyncPos( Vector3 pos)
+//	{
+//
+//	}
 	
 }

@@ -81,11 +81,11 @@ public class Player_CommandList : NetworkBehaviour {
 	 * 
 	 * */
 	[Command]
-	public void CmdMoveUnitToTile( GameObject unit, GameObject dest)
+	public void CmdMoveUnitToTile( GameObject unit, GameObject src, GameObject dest)
 	{
 		Pathfinder finder = GameObject.Find ("GameMaster").GetComponent<Pathfinder>();
 		Dictionary<HexTile, HexTile> thePath = finder.GetPathToTile( unit.GetComponent<Moveable>(),
-		                                                             unit.GetComponent<Moveable>().occupying,
+		                                                             src.GetComponent<HexTile>(),
 		                                                             dest.GetComponent<HexTile>());
 
 //		unit.transform.position = dest.transform.position + new Vector3( 32, 0, 0);
@@ -100,7 +100,7 @@ public class Player_CommandList : NetworkBehaviour {
 		HexTile theTile = dest.GetComponent<HexTile>();
 		int j = 0;
 		ArrayList pathOrder = new ArrayList() { theTile.gameObject};
-		while (theTile != unit.GetComponent<Moveable>().occupying)
+		while (theTile != src.GetComponent<HexTile>())
 		{
 			theTile = thePath[ theTile];
 			pathOrder.Add ( theTile.gameObject);
@@ -109,24 +109,25 @@ public class Player_CommandList : NetworkBehaviour {
 
 		pathOrder.Reverse ();
 
-		unit.GetComponent<Moveable>().occupying.occupants.Remove( unit);
+		src.GetComponent<HexTile>().occupants.Remove( unit);
+		unit.GetComponent<Moveable>().occupying = src.GetComponent<HexTile>();
 		unit.GetComponent<Moveable>().pathToTake = pathOrder;
 
 //		unit.GetComponent<Moveable>().occupying = dest.GetComponent<HexTile>();
 //		dest.GetComponent<HexTile>().occupants.Add( unit);
 //		unit.transform.position = dest.transform.position;
 
-		RpcIssueMoveOrderToClients( unit, dest);
+		RpcIssueMoveOrderToClients( unit, src, dest);
 	}
 
 	// update variables local to each client
 	[ClientRpc]
-	private void RpcIssueMoveOrderToClients( GameObject unit, GameObject dest)
+	private void RpcIssueMoveOrderToClients( GameObject unit, GameObject src, GameObject dest)
 	{
 		// no more teleporting
 		Pathfinder finder = GameObject.Find ("GameMaster").GetComponent<Pathfinder>();
 		Dictionary<HexTile, HexTile> thePath = finder.GetPathToTile( unit.GetComponent<Moveable>(),
-		                                                            unit.GetComponent<Moveable>().occupying,
+		                                                            src.GetComponent<HexTile>(),
 		                                                            dest.GetComponent<HexTile>());
 		
 		//		unit.transform.position = dest.transform.position + new Vector3( 32, 0, 0);
@@ -141,7 +142,7 @@ public class Player_CommandList : NetworkBehaviour {
 		HexTile theTile = dest.GetComponent<HexTile>();
 		int j = 0;
 		ArrayList pathOrder = new ArrayList() { theTile.gameObject};
-		while (theTile != unit.GetComponent<Moveable>().occupying)
+		while (theTile != src.GetComponent<HexTile>())
 		{
 			theTile = thePath[ theTile];
 			pathOrder.Add ( theTile.gameObject);
@@ -150,7 +151,8 @@ public class Player_CommandList : NetworkBehaviour {
 		
 		pathOrder.Reverse ();
 
-		unit.GetComponent<Moveable>().occupying.occupants.Remove( unit);
+		src.GetComponent<HexTile>().occupants.Remove( unit);
+		unit.GetComponent<Moveable>().occupying = src.GetComponent<HexTile>();
 		unit.GetComponent<Moveable>().pathToTake = pathOrder;
 
 		// for now we teleport

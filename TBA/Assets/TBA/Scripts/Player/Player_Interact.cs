@@ -90,7 +90,7 @@ public class Player_Interact : NetworkBehaviour {
 //		GameObject gm = GameObject.Find("GameMaster");
 //		Pathfinder pf = gm.GetComponent<Pathfinder>();
 
-		GetComponent<Player_CommandList>().CmdMoveUnitToTile( unit, dst.gameObject);
+		GetComponent<Player_CommandList>().CmdMoveUnitToTile( unit, src.gameObject, dst.gameObject);
 	}
 
 	private bool canPathToTile( HexTile src, HexTile dst, GameObject unit)
