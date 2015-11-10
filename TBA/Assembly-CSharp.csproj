@@ -47,7 +47,17 @@
   <ItemGroup>
      <Compile Include="Assets\TBA\Scripts\Attributes\Moveable.cs" />
      <Compile Include="Assets\TBA\Scripts\Character\Character.cs" />
+     <Compile Include="Assets\TBA\Scripts\GameMaster\CharacterSelect\RosterManager.cs" />
+     <Compile Include="Assets\TBA\Scripts\GameMaster\Level_Controller_SplitCastle.cs" />
      <Compile Include="Assets\TBA\Scripts\GameMaster\Pathfinder.cs" />
+     <Compile Include="Assets\TBA\Scripts\GameMaster\UI\UI_Controller.cs" />
+     <Compile Include="Assets\TBA\Scripts\GameMaster\UI\UI_Player.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_CameraControl.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_CommandList.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_Info.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_Interact.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_NetworkSetup.cs" />
+     <Compile Include="Assets\TBA\Scripts\Player\Player_UID.cs" />
      <Compile Include="Assets\TBA\Scripts\Preprocessor\Level_Processor.cs" />
      <Compile Include="Assets\TBA\Scripts\SupportCode\Library.cs" />
      <Compile Include="Assets\TBA\Scripts\Tiles\HexTile.cs" />
@@ -63,11 +73,17 @@
      <None Include="Assets\Tiled2Unity\License.txt" />
      <None Include="Assets\Tiled2Unity\Imported\_ReadMe.txt" />
      <None Include="Assets\Tiled2Unity\Meshes\_ReadMe.txt" />
+ <Reference Include="UnityEngine.Analytics">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.Advertisements">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

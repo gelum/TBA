@@ -16,8 +16,8 @@ public class Pathfinder : MonoBehaviour {
 												// in order to prune unnecessary computations
 
 	// private parts ;; A* Searching
-	private Dictionary<HexTile, HexTile> cameFrom = new Dictionary<HexTile, HexTile>();
-	private Dictionary<HexTile, int> costSoFar = new Dictionary<HexTile, int>();
+//	private Dictionary<HexTile, HexTile> cameFrom = new Dictionary<HexTile, HexTile>();
+//	private Dictionary<HexTile, int> costSoFar = new Dictionary<HexTile, int>();
 
 	
 	// Use this for initialization
@@ -36,8 +36,8 @@ public class Pathfinder : MonoBehaviour {
 
 	public Dictionary<HexTile, HexTile> GetPathToTile( Moveable peep, HexTile source, HexTile destination)
 	{	
-		cameFrom = new Dictionary<HexTile, HexTile>();
-		costSoFar = new Dictionary<HexTile, int>();
+		Dictionary<HexTile, HexTile> cameFrom = new Dictionary<HexTile, HexTile>();
+		Dictionary<HexTile, int> costSoFar = new Dictionary<HexTile, int>();
 
 		var frontier = new PriorityQueue<HexTile>();
 		frontier.Enqueue(source, 0);
@@ -68,7 +68,7 @@ public class Pathfinder : MonoBehaviour {
 				}
 			}
 		}
-		
+
 		return cameFrom;
 	}
 

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class HexTile : MonoBehaviour {
+public class HexTile : NetworkBehaviour {
 
 	// public parts
     public string Type;
@@ -11,13 +12,14 @@ public class HexTile : MonoBehaviour {
     public GameObject left, right, up_left, up_right, down_left, down_right;
 	public ArrayList occupants = new ArrayList();
 	public ArrayList occupantTeams = new ArrayList();
+	public Vector3 centre;
 
 	// private parts
 	// private Mesh highlight;
 
 	// Use this for initialization
 	void Start () {
-
+		centre = gameObject.transform.position + new Vector3( 32, 0, 0);
 //		HighlightTile ();
 	}
 	

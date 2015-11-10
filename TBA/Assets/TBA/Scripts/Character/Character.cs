@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Networking;
 
 public enum Team { Left, Right, Boss };
 
-public class Character : MonoBehaviour {
+public class Character : NetworkBehaviour {
 
+	[SyncVar] public string ownerID;
 	public Team team;				// which team are you on
 	public ArrayList enemyTeams;	// which teams are you against
 	public float hp;				// how much hp do you have
 
 	// Use this for initialization
 	void Start () {
-		
+
 	}
 
 	void setTeam ( Team newTeam)

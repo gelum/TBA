@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5e7d18bde9203416ca5daff77db81b48
+timeCreated: 1446772959
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - alienGreen: {fileID: 497188, guid: cbe377d99b1f147a68228d14426d90f7, type: 2}
+  - alienYellow: {fileID: 490988, guid: 50fd24de5aaf54a0193a215a5069af17, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
